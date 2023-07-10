@@ -1,0 +1,20 @@
+[
+  {
+    "id": "9fd8b81d-a0b1-42da-9220-99971b437278",
+    "title": "Mouse Gamer",
+    "description": "Raton para video juegos.",
+    "price": 48000,
+    "thumbmail": "google.com",
+    "code": "01",
+    "stock": "3"
+  },
+  {
+    "id": "229fbf73-0ee1-4f05-b689-f0451b6e50b5",
+    "title": "Boar",
+    "description": "AMD Radeon.",
+    "price": 439000,
+    "thumbmail": "google.com",
+    "code": "02",
+    "stock": "1"
+  }
+]

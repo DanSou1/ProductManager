@@ -8,4 +8,6 @@ producto.addProduct("Boar","AMD Radeon.",439000,"google.com","02","1"); */
 //Ver un producto en especifico
 /* producto.getProductById("9fd8b81d-a0b1-42da-9220-99971b437278"); */
 //Editar producto
-producto.updateProduct("9fd8b81d-a0b1-42da-9220-99971b437278", 'Ancheta Gamer','', undefined,'youtube.com', '010101', undefined);
+/* producto.updateProduct("9fd8b81d-a0b1-42da-9220-99971b437278", 'Ancheta Gamer','', undefined,'youtube.com', '010101', undefined); */
+//Eliminar producto
+producto.deleteProduct("9fd8b81d-a0b1-42da-9220-99971b437278");

@@ -110,4 +110,22 @@ export default class ProductManager
         let jsonNuevo = JSON.stringify(identificador, null, 2);
         fs.writeFileSync(`${this.path}`, jsonNuevo);
     }
+    deleteProduct(ide){
+        const identificador = JSON.parse(fs.readFileSync(this.path, 'utf-8'));
+        const objeto = identificador.find(objeto => objeto.id === ide);
+        try 
+        {
+            for(let i in objeto)
+            {
+                objeto.id = '', objeto.title = '', objeto.description = '', objeto.price = '', objeto.thumbmail = '', objeto.code = '', objeto.stock = '';
+                let jsonNuevo = JSON.stringify(identificador, null, 2);
+                fs.writeFileSync(`${this.path}`, jsonNuevo);
+            }
+            console.log(objeto)
+        } 
+        catch (error) 
+        {
+            console.log(error, 'No pudo ser eliminado')
+        }
+    }
 }

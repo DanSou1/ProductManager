@@ -2,6 +2,7 @@ import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';
 import { error } from 'console';
+import { type } from 'os';
 export default class ProductManager
 {
     constructor(path)
@@ -74,10 +75,39 @@ export default class ProductManager
             console.log('Error al obtener el producto:', error);
         }
     }
-    updateProduct(ide){
+    updateProduct(ide, titulo, descripcion, precio, link, codigo, disponible)
+    {
+        let objeto = [ide, titulo, descripcion, precio, link, codigo, disponible];
         const identificador = JSON.parse(fs.readFileSync(this.path, 'utf-8'));
         const info = identificador.find(objeto => objeto.id === ide);
+        let a = [info.id, info.title, info.description, info.price, info.thumbmail, info.code, info.stock];
+        for(let i in a)
+        {
+            if (i >=1) 
+            {
+                if (objeto[i] != '' && objeto[i] != undefined ) 
+                {
+                    a[i] = objeto[i];
+                }
+            }
+        }
+        const objet = 
+        {
+            id: a[0],
+            title: a[1],
+            description: a[2],
+            price: a[3],
+            thumbmail: a[4],
+            code: a[5],
+            stock: a[6]
+        };
+        info.title = objet.title;
+        info.description = objet.description;
+        info.price = objet.price;
+        info.thumbmail = objet.thumbmail;
+        info.code = objet.code;
+        info.stock = objet.stock;
+        let jsonNuevo = JSON.stringify(identificador, null, 2);
+        fs.writeFileSync(`${this.path}`, jsonNuevo);
     }
 }
-
-

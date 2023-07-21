@@ -17,11 +17,10 @@ export default class ProductManager
         {
             const productos = await fs.promises.readFile(this.path, 'utf-8');
             console.log('Sus productos son: \n' + productos);
-            return this.products;
         }
         catch (err) 
         {
-        console.error('Error al leer el archivo: ' + err);
+        throw new Error("Error en la clase getProducts, posiblemente la ruta del archivo no exista o no fue encontrada.");
         }
     }
     async addProduct (titulo,descripcion, precio, link, codigo, disponible)
@@ -39,7 +38,7 @@ export default class ProductManager
         }
         try 
         {
-            if (titulo === '' || descripcion === '' || precio === '' || link === '' || disponible === '' || codigo === '') 
+            if (!titulo || !descripcion || !link || !disponible || !codigo || !precio || (isNaN(Number(precio))) ) 
             {
                 console.log('Su producto no puede ser cargado');
             } 
